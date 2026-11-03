@@ -21,12 +21,12 @@ Ce que j'ai trouvé dans mon `extracted.json` (12 offres) : pas de doublon exact
 
 ## 5. Critique pass as human-in-the-loop
 
-C'est du human-in-the-loop parce qu'une personne relit la sortie brute du modèle en la comparant au texte source, et peut corriger avant que les erreurs partent dans le KPI. Ça doit se faire sur `extracted.json` car c'est là qu'on voit chaque offre avec ses compétences : dans `kpi.json` tout est déjà agrégé, on ne peut plus savoir quelle offre a une compétence oubliée ou inventée. Erreur trouvée par mon binôme : [À COMPLÉTER après l'échange avec un camarade].
+C'est du human-in-the-loop parce qu'une personne relit la sortie brute du modèle en la comparant au texte source, et peut corriger avant que les erreurs partent dans le KPI. Ça doit se faire sur `extracted.json` car c'est là qu'on voit chaque offre avec ses compétences : dans `kpi.json` tout est déjà agrégé, on ne peut plus savoir quelle offre a une compétence oubliée ou inventée. Erreur trouvée en relisant mon fichier : l'offre 12 (ingénieur DevOps chez GE Vernova) ne ressort qu'avec « CI/CD pipelines, microservices, automation, deployment », alors que l'offre complète demande Python, Docker, Kubernetes et Linux. Pareil pour l'offre 8 (stage BCG X) : zéro compétence, alors que Python est demandé. La cause : le script n'envoie que les 1500 premiers caractères au modèle, et ces offres commencent par une longue présentation de l'entreprise. Le modèle n'a pas « raté », il n'a jamais vu le texte, ce qu'on ne peut voir qu'en comparant avec l'offre d'origine.
 
 
 ## 6. My own TARGET_SKILL, and which KPI value I'd trust
 
-Mon choix : CI/CD, parce que c'est une pratique qu'on retrouve aussi bien en logiciel qu'en embarqué et qu'on en parle peu en cours. Résultat : Python = 17 % (2/12), CI/CD = 25 % (3/12). Je ne ferais confiance à aucun des deux pour dire au comité « il faut enseigner X » : 12 offres c'est trop peu (une offre de plus ou de moins change le résultat de 8 points), il y a une annonce en double dans mon échantillon, et les offres ne ressemblent pas forcément à ce que visent les étudiants de l'ENSIM.
+Mon choix : CI/CD, parce que c'est une pratique qu'on retrouve aussi bien en logiciel qu'en embarqué et qu'on en parle peu en cours. Résultat : Python = 17 % (2/12), CI/CD = 25 % (3/12). Je ne ferais confiance à aucun des deux pour dire au comité « il faut enseigner X » : 12 offres c'est trop peu (une offre de plus ou de moins change le résultat de 8 points), il y a une annonce en double dans mon échantillon, et les offres ne ressemblent pas forcément à ce que visent les étudiants de l'ENSIM. Surtout, la relecture a montré que le chiffre Python est faux : en lisant les offres en entier, Python apparaît dans 4 offres sur 12 (33 %) et pas 2 (17 %), à cause de la coupure à 1500 caractères. Le KPI publié est donc sous-estimé de moitié, alors que rien dans le résultat ne le laissait deviner.
 
 
 ## 7. What can be reconstructed from kpi.json alone
