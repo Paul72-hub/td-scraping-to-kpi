@@ -36,5 +36,9 @@ Dans `kpi.json` il n'y a que des pourcentages, des comptes et des noms de compé
 
 ## 8. Who this dashboard is really for
 
+Pour l'instant, le dashboard est surtout fait pour moi (ou le prof) pour vérifier que le pipeline marche : le titre « Scraping to KPI lab » et la phrase qui renvoie à `extracted.json` et `compute_kpi.py` parlent de code, pas d'une décision. Un comité pédagogique ne saurait pas quoi en conclure, d'autant que `extracted.json` n'est même pas publié. Je changerais la description par : « Quelles compétences techniques les offres d'emploi ingénieur demandent-elles le plus ? Échantillon de 12 offres, à prendre comme une tendance et pas comme un chiffre exact. »
+
 
 ## 9. My second KPI, and which one I'd trust more
+
+Mon deuxième KPI mesure la part des offres qui citent au moins un fournisseur cloud (AWS, Azure ou GCP) : 17 % (2/12), contre 17 % aussi pour Python. Je ferais un peu plus confiance au KPI cloud, parce qu'il regroupe une famille de technologies, donc il est moins sensible aux variantes d'écriture (« AWS Bedrocks », « Microsoft Azure », « Azure Active Directory » comptent tous). Mais il a les mêmes limites (12 offres, texte coupé à 1500 caractères), et il mélange un poste DevOps et un poste de support informatique qui n'utilisent pas du tout le cloud de la même façon, donc je ne m'en servirais pas seul pour prendre une vraie décision.

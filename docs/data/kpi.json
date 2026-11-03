@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T08:02:26Z",
+  "generated_at": "2026-11-03T08:39:03Z",
   "kpi_label": "% of postings mentioning 'python'",
   "kpi_value": 0.167,
   "n_postings_analyzed": 12,
@@ -46,5 +46,10 @@
       "count": 1
     }
   ],
-  "avg_skills_per_posting": 5.92
+  "avg_skills_per_posting": 5.92,
+  "second_kpi": {
+    "kpi_label": "% of postings mentioning at least one cloud provider (AWS, Azure, GCP)",
+    "kpi_value": 0.167,
+    "n_matching": 2
+  }
 }

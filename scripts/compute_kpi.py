@@ -31,9 +31,26 @@ def compute_kpi(postings, target_skill=TARGET_SKILL):
         "avg_skills_per_posting": round(sum(len(p.get("required_skills", [])) for p in postings) / n, 2) if n else 0.0,
     }
 
+CLOUD_KEYWORDS = ["aws", "azure", "gcp", "google cloud"]
+
+def compute_cloud_kpi(postings, keywords=CLOUD_KEYWORDS):
+    """Second KPI, a different definition: share of postings that mention ANY of
+    the three big cloud providers, whatever the exact service named."""
+    n = len(postings)
+    matching = [
+        p for p in postings
+        if any(k in s.lower() for s in p.get("required_skills", []) for k in keywords)
+    ]
+    return {
+        "kpi_label": "% of postings mentioning at least one cloud provider (AWS, Azure, GCP)",
+        "kpi_value": round(len(matching) / n, 3) if n else 0.0,
+        "n_matching": len(matching),
+    }
+
 def main():
     postings = load_extracted()
     kpi = compute_kpi(postings)
+    kpi["second_kpi"] = compute_cloud_kpi(postings)
     print(json.dumps(kpi, indent=2))
     with open("docs/data/kpi.json", "w", encoding="utf-8") as f:
         json.dump(kpi, f, indent=2)

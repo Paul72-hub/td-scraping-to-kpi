@@ -35,6 +35,18 @@ fetch('data/kpi.json')
       <div class="label">Average ${data.avg_skills_per_posting} distinct skills extracted per posting</div>
     `;
 
+    if (data.second_kpi) {
+      const k2 = data.second_kpi;
+      const card = document.createElement('div');
+      card.id = 'kpi-card-2';
+      card.style.cssText = 'margin-top:1rem;padding:1rem;border:2px solid #0d7c9e;border-radius:8px;';
+      card.innerHTML = `
+        <div style="font-size:2rem;font-weight:bold;color:#0d7c9e">${(k2.kpi_value * 100).toFixed(0)}%</div>
+        <div style="font-size:0.9rem;color:#666">${k2.kpi_label} (${k2.n_matching} of ${data.n_postings_analyzed} postings)</div>
+      `;
+      document.getElementById('kpi-card').after(card);
+    }
+
     const top = data.top_skills || [];
     new Chart(document.getElementById('skillsChart'), {
       type: 'bar',
